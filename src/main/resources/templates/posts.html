@@ -78,7 +78,8 @@
                     <tr th:each="post : ${posts}" class="hover:bg-primary/10 transition-colors group">
                         <td class="px-6 py-6 font-mono text-slate-500" th:text="${post.no}">01</td>
                         <td class="px-6 py-6">
-                            <a href="#" class="text-lg font-medium group-hover:text-primary transition-colors"
+                            <a th:href="@{/posts/{no}(no=${post.no})}"
+                                class="text-lg font-medium group-hover:text-primary transition-colors"
                                 th:text="${post.title}">Post Title</a>
                         </td>
                         <td class="px-6 py-6 text-right text-slate-400 font-light"

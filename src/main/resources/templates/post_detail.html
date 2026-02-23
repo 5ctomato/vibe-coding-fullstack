@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title th:text="'Vibe Coding | ' + ${post.title}">Vibe Coding | Post Detail</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-dark": "#0a0a0c",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .prose-custom {
+            line-height: 1.8;
+            letter-spacing: -0.01em;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-slate-100 antialiased pt-24 px-6 min-h-screen">
+    <nav
+        class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5 h-20 flex items-center justify-between px-6">
+        <div class="flex items-center gap-3">
+            <a href="/" class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-xl">electric_bolt</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-white uppercase">Vibe Coding</span>
+            </a>
+        </div>
+        <div class="flex items-center gap-6">
+            <a href="/" class="text-sm font-medium hover:text-primary transition-colors">Home</a>
+            <a href="/posts" class="text-sm font-medium hover:text-primary transition-colors">Posts</a>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto space-y-8">
+        <div class="flex items-center justify-between">
+            <a href="/posts" class="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+                <span
+                    class="material-symbols-outlined transition-transform group-hover:-translate-x-1">arrow_back</span>
+                목록으로 돌아가기
+            </a>
+            <div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-primary">
+                <span th:text="'Node #' + ${post.no}">Node #01</span>
+                <span class="w-1 h-1 bg-white/20 rounded-full"></span>
+                <span th:text="${post.views} + ' Waves'">124 Waves</span>
+            </div>
+        </div>
+
+        <article class="space-y-12 pb-20">
+            <header class="space-y-6">
+                <h1 class="text-5xl md:text-6xl font-bold tracking-tighter leading-tight" th:text="${post.title}">Post
+                    Title</h1>
+                <div class="flex flex-wrap items-center gap-6 text-sm text-slate-400 font-light">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">calendar_today</span>
+                        <span
+                            th:text="'Created: ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}">2024-01-01</span>
+                    </div>
+                    <div class="flex items-center gap-2" th:if="${post.updatedAt != null}">
+                        <span class="material-symbols-outlined text-sm">edit</span>
+                        <span
+                            th:text="'Updated: ' + ${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')}">2024-01-01</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="glass-panel rounded-3xl p-8 md:p-12 prose-custom text-slate-300 text-lg md:text-xl font-light whitespace-pre-wrap"
+                th:text="${post.content}">
+                Post Content
+            </div>
+        </article>
+    </main>
+
+    <footer class="py-20 border-t border-white/5 text-center text-slate-500 text-xs tracking-widest uppercase">
+        © 2024 Vibe Coding Protocol. System Version 2.0.4-beta
+    </footer>
+</body>
+
+</html>
