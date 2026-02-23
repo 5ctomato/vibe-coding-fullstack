@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: vibeapp
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.example.vibeapp: DEBUG

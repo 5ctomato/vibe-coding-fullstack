@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vibe Coding | Elevate Your Flow</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0a0a0c",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(19, 91, 236, 0.15) 0%, transparent 70%);
+        }
+
+        .electric-glow:hover {
+            box-shadow: 0 0 20px rgba(19, 91, 236, 0.4);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/30">
+    <!-- Top Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-xl">electric_bolt</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase">Vibe
+                    Coding</span>
+            </div>
+            <div class="hidden md:flex items-center gap-10">
+                <a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
+                    href="#">Process</a>
+                <a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
+                    href="#">Manifesto</a>
+                <a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
+                    href="#">Nodes</a>
+                <button
+                    class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold tracking-wide electric-glow transition-all">
+                    Join the Vibe
+                </button>
+            </div>
+            <div class="md:hidden">
+                <span class="material-symbols-outlined cursor-pointer">menu</span>
+            </div>
+        </div>
+    </nav>
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative min-h-[90vh] flex items-center overflow-hidden px-6">
+            <div class="absolute inset-0 hero-gradient -z-10"></div>
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        </span>
+                        System Online
+                    </div>
+                    <h1
+                        class="text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter text-slate-900 dark:text-white">
+                        Elevate <br />Your <span class="text-primary">Flow</span>
+                    </h1>
+                    <p
+                        class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed font-light">
+                        The future of intuitive programming is here. Connect your intent to the machine and code at the
+                        speed of human thought.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button
+                            class="h-14 px-10 bg-primary text-white font-bold rounded-lg electric-glow transition-all flex items-center justify-center gap-2">
+                            Initialize Session
+                            <span class="material-symbols-outlined">terminal</span>
+                        </button>
+                        <button
+                            class="h-14 px-10 border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 font-medium rounded-lg transition-all flex items-center justify-center">
+                            View Methodology
+                        </button>
+                    </div>
+                </div>
+                <div class="relative lg:block">
+                    <div
+                        class="aspect-square w-full max-w-[500px] mx-auto bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden glass-panel relative">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
+                        <img alt="Abstract 3D Network" class="w-full h-full object-cover mix-blend-overlay opacity-60"
+                            data-alt="Sophisticated 3D abstract graphic representing connectivity and nodes"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX5AuUq9m6lYUf47K-0TydyWgBWATq3F3oaOhSnpkY3S7GTKMIXM9D_cUPqhuESufT6cDU809thJtX3q7bJ8tsIDbwVNHzdZgu0hMQy5LMVbrkmbuO_agWX8qcgG5dMPmSCE7QtGr2sZKI5BXPBlCN4GDZW7FNobUwOUKoUQwQ6rhNwHjUdwC-btg3ra7fIqHXFyUuVgxUkbEUQ9g_fxmq3ghi2YIIcMn-2ZuEVrKx2BMlrBxn8Rqyx_58jTc5uVoySLEG8e4MtMk" />
+                        <div class="absolute bottom-6 left-6 right-6 p-6 glass-panel rounded-xl">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-bold uppercase tracking-widest text-primary">Core
+                                    Signal</span>
+                                <span class="text-xs text-slate-400">99.8% Sync Rate</span>
+                            </div>
+                            <div class="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary w-4/5"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative floating elements -->
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/20 blur-3xl rounded-full"></div>
+                    <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-primary/10 blur-3xl rounded-full"></div>
+                </div>
+            </div>
+        </section>
+        <!-- Stats Section -->
+        <section class="py-20 border-y border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02]">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center md:text-left">
+                    <p class="text-primary text-3xl md:text-4xl font-bold mb-1">12k+</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm uppercase tracking-widest">Active Coders</p>
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-primary text-3xl md:text-4xl font-bold mb-1">1.2M</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm uppercase tracking-widest">Flow Hours</p>
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-primary text-3xl md:text-4xl font-bold mb-1">48</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm uppercase tracking-widest">Global Nodes</p>
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-primary text-3xl md:text-4xl font-bold mb-1">0.4ms</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm uppercase tracking-widest">Latent Intent</p>
+                </div>
+            </div>
+        </section>
+        <!-- How it Works -->
+        <section class="py-32 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-24">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight dark:text-white">The Methodology of
+                        Flow</h2>
+                    <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg">Experience the harmony of
+                        high-energy development through our three core principles of intuitive alignment.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div
+                        class="group p-8 rounded-2xl glass-panel hover:bg-primary/[0.04] transition-all border-slate-200 dark:border-white/5">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">sync_alt</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 dark:text-white">Sync</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Connect your biological intent to the digital substrate with seamless integration protocols
+                            designed for zero friction.
+                        </p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div
+                        class="group p-8 rounded-2xl glass-panel hover:bg-primary/[0.04] transition-all border-slate-200 dark:border-white/5">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">waves</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 dark:text-white">Flow</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Code at the speed of thought in an environment that removes cognitive load and highlights
+                            pure creative logic.
+                        </p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div
+                        class="group p-8 rounded-2xl glass-panel hover:bg-primary/[0.04] transition-all border-slate-200 dark:border-white/5">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">auto_awesome</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 dark:text-white">Vibe</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            A state of being where the distinction between developer and development disappears into
+                            high-energy productivity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Join the Vibe -->
+        <section class="py-32 px-6">
+            <div
+                class="max-w-5xl mx-auto rounded-[2.5rem] bg-slate-900 dark:bg-primary p-12 md:p-24 relative overflow-hidden text-center">
+                <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+                    <img alt="Tech Pattern" class="w-full h-full object-cover grayscale invert"
+                        data-alt="Abstract dark tech pattern with grid lines and circuits"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD62SoR8erxKFyuBeqeBa8gE0Ru5p8FcAT5YHCv4sX21n7j9U-nYNQQXLywjMKmdRVzKSi3JVQU8JUoinRN_xf7My9xl57jZR_gTEJ3zHodE1VNYW7U-t1oPGH1teOhzcFGRuLG8N21rAs5fjurm3Ghrmu32DpcduNkw9Old-WBKL9_QOj70AIJL60zKhQ3NMtXftEDRQEMOyu4hUyGPcTm4SARMR8TOgVtehyP3gcnbF2y-a7UVLcpV8m50rHQYe0ER3CG_zezgM" />
+                </div>
+                <div class="relative z-10">
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tighter">Enter the Inner Circle
+                    </h2>
+                    <p class="text-white/80 text-xl mb-12 max-w-xl mx-auto font-light">
+                        Join the collective of high-energy developers redefining the boundaries of software creation.
+                    </p>
+                    <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                        <input
+                            class="flex-1 h-14 px-6 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
+                            placeholder="access@vibecoding.io" type="email" />
+                        <button
+                            class="h-14 px-8 bg-white text-slate-900 dark:text-primary font-bold rounded-lg hover:bg-slate-100 transition-all">
+                            Initialize Join
+                        </button>
+                    </form>
+                    <p class="mt-8 text-white/40 text-sm">Deployment slots available for Q4. No invite required for now.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="py-20 px-6 border-t border-slate-200 dark:border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+            <div class="flex items-center gap-3">
+                <div class="w-6 h-6 bg-primary rounded-sm flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-sm">electric_bolt</span>
+                </div>
+                <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white uppercase">Vibe
+                    Coding</span>
+            </div>
+            <div class="flex gap-12 text-sm font-medium text-slate-500 dark:text-slate-400">
+                <a class="hover:text-primary transition-colors" href="#">Privacy</a>
+                <a class="hover:text-primary transition-colors" href="#">Documentation</a>
+                <a class="hover:text-primary transition-colors" href="#">Changelog</a>
+                <a class="hover:text-primary transition-colors" href="#">Status</a>
+            </div>
+            <div class="flex gap-6">
+                <a class="text-slate-400 hover:text-primary transition-colors" href="#">
+                    <span class="material-symbols-outlined">data_object</span>
+                </a>
+                <a class="text-slate-400 hover:text-primary transition-colors" href="#">
+                    <span class="material-symbols-outlined">alternate_email</span>
+                </a>
+                <a class="text-slate-400 hover:text-primary transition-colors" href="#">
+                    <span class="material-symbols-outlined">rss_feed</span>
+                </a>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-200 dark:border-white/5 text-center text-slate-400 text-xs tracking-widest uppercase">
+            © 2024 Vibe Coding Protocol. System Version 2.0.4-beta
+        </div>
+    </footer>
+</body>
+
+</html>
