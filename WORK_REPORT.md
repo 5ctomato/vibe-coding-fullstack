@@ -10,10 +10,12 @@
 ## 2. 주요 구현 내용
 - **프로젝트 스켈레톤**: Gradle 래퍼 및 기본 설정 파일(`build.gradle`, `settings.gradle`, `application.yml`) 구성.
 - **REST API 구현**: `VibeApp` 클래스에 `@RestController`를 적용하여 `/api/hello` 엔드포인트 구현.
+- **게시글 목록 조회**: `Post` 도메인 모델과 메모리 기반 `PostRepository`를 구현하여 `/posts` 화면 제공.
 - **웹 서버 설정**: `spring-boot-starter-web` 추가를 통한 내장 톰캣 서버 활성화.
 
 ## 3. 검증 결과
 - **API 테스트**: `http://localhost:8080/api/hello` 접속 시 "Hello, Vibe!" 응답 확인.
+- **게시글 목록**: `http://localhost:8080/posts` 접속 시 10개의 샘플 데이터 목록 출력 확인.
 - **서버 구동**: 8080 포트에서 정상 동작 중.
 
 ## 4. 파일 링크

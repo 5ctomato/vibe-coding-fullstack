@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vibe Coding | Post List</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-dark": "#0a0a0c",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-slate-100 antialiased pt-24 px-6 min-h-screen">
+    <nav
+        class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5 h-20 flex items-center justify-between px-6">
+        <div class="flex items-center gap-3">
+            <a href="/" class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-xl">electric_bolt</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-white uppercase">Vibe Coding</span>
+            </a>
+        </div>
+        <div class="flex items-center gap-6">
+            <a href="/" class="text-sm font-medium hover:text-primary transition-colors">Home</a>
+            <a href="/posts"
+                class="text-sm font-bold text-primary transition-colors border-b-2 border-primary">Posts</a>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto space-y-12">
+        <div class="space-y-4">
+            <h1 class="text-5xl font-bold tracking-tighter">Nodes of <span class="text-primary">Wisdom</span></h1>
+            <p class="text-slate-400 text-lg max-w-2xl font-light">고에너지 환경에서 생성된 지식의 노드(게시글) 목록입니다.</p>
+        </div>
+
+        <div class="glass-panel rounded-2xl overflow-hidden">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-white/5 text-primary uppercase text-xs tracking-widest font-bold">
+                        <th class="px-6 py-4 border-b border-white/10">No.</th>
+                        <th class="px-6 py-4 border-b border-white/10">Title</th>
+                        <th class="px-6 py-4 border-b border-white/10 text-right">Created At</th>
+                        <th class="px-6 py-4 border-b border-white/10 text-right">Views</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5">
+                    <tr th:each="post : ${posts}" class="hover:bg-primary/10 transition-colors group">
+                        <td class="px-6 py-6 font-mono text-slate-500" th:text="${post.no}">01</td>
+                        <td class="px-6 py-6">
+                            <a href="#" class="text-lg font-medium group-hover:text-primary transition-colors"
+                                th:text="${post.title}">Post Title</a>
+                        </td>
+                        <td class="px-6 py-6 text-right text-slate-400 font-light"
+                            th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}">2024-01-01</td>
+                        <td class="px-6 py-6 text-right">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold"
+                                th:text="${post.views}">42</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex justify-center pt-8">
+            <button
+                class="h-12 px-8 border border-white/10 hover:bg-white/5 font-medium rounded-lg transition-all flex items-center justify-center gap-2">
+                Load More Nodes
+                <span class="material-symbols-outlined text-sm">expand_more</span>
+            </button>
+        </div>
+    </main>
+
+    <footer class="py-20 mt-20 border-t border-white/5 text-center text-slate-500 text-xs tracking-widest uppercase">
+        © 2024 Vibe Coding Protocol. System Version 2.0.4-beta
+    </footer>
+</body>
+
+</html>

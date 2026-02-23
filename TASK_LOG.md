@@ -13,3 +13,7 @@
     - [x] `build.gradle`에 `spring-boot-starter-web` 추가
     - [x] `VibeApp.java`에 `/api/hello` 엔드포인트 구현 (RestController)
 - [x] 서버 재구동 및 동작 확인
+- [x] 게시글 목록 조회 기능 추가
+    - [x] Post 엔티티, Repository, Service, Controller 구현
+    - [x] posts.html 템플릿 구현 (디자인 시스템 적용)
+    - [x] 샘플 데이터 10개 추가 및 검증
