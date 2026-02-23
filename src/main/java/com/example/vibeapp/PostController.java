@@ -31,4 +31,11 @@ public class PostController {
     public String newPostForm() {
         return "post_new_form";
     }
+
+    @org.springframework.web.bind.annotation.PostMapping("/posts/add")
+    public String addPost(@org.springframework.web.bind.annotation.RequestParam("title") String title,
+            @org.springframework.web.bind.annotation.RequestParam("content") String content) {
+        postService.addPost(title, content);
+        return "redirect:/posts";
+    }
 }

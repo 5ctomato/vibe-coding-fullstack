@@ -22,4 +22,10 @@ public class PostService {
         }
         return post;
     }
+
+    public void addPost(String title, String content) {
+        Post post = new Post(null, title, content, java.time.LocalDateTime.now(), 0);
+        post.setUpdatedAt(null); // Explicitly set as per requirement
+        postRepository.save(post);
+    }
 }
