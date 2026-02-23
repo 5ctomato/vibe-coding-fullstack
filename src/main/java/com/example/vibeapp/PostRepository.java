@@ -22,7 +22,9 @@ public class PostRepository {
     }
 
     public List<Post> findAll() {
-        return new ArrayList<>(posts);
+        List<Post> sortedList = new ArrayList<>(posts);
+        sortedList.sort((p1, p2) -> p2.getNo().compareTo(p1.getNo()));
+        return sortedList;
     }
 
     public Post findByNo(Long no) {
