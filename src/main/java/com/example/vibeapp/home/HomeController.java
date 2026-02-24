@@ -11,7 +11,7 @@ public class HomeController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("message", "Welcome to VibeApp!");
-        return "index";
+        return "home/home";
     }
 
     @GetMapping("/api/hello")
