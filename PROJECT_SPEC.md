@@ -1,34 +1,32 @@
 # 프로젝트 명세서: VibeApp
 
-최소 기능을 갖춘 스프링부트 애플리케이션 'vibeapp'의 프로젝트 명세서입니다.
+최소 기능을 넘어 게시글 관리 기능을 포함한 스프링부트 애플리케이션 'vibeapp'의 프로젝트 명세서입니다.
 
-## 사용자 검토 필요 사항
+## 프로젝트 개요
+- **목적**: 고에너지 환경에서 지식의 노드(게시글)를 관리하는 커뮤니티 플랫폼
+- **스택**: JDK 25, Spring Boot 4.0.1, Thymeleaf, Spring Web
 
-> [!IMPORTANT]
-> 본 프로젝트는 **JDK 25** 및 **Spring Boot 4.0.1** 기반으로 설정되었습니다. 이는 매우 최신(혹은 미래 지향적인) 사양으므로, 현재 개발 환경에서 해당 버전을 지원하는지 확인이 필요합니다.
+## 아키텍처 개요 (기능형 구조)
+프로젝트는 유지보수성을 위해 도메인 기반의 기능형 패키지 구조를 따릅니다.
 
-## 제안된 변경 사항
+### 1. Backend (`com.example.vibeapp`)
+- **[home]**: 랜딩 페이지 및 공통 API 처리 (`HomeController`)
+- **[post]**: 게시글 도메인 관련 전체 로직 처리
+    - `Post`: 게시글 엔티티
+    - `PostController`: 라우팅 및 뷰 매핑
+    - `PostService`: 비즈니스 로직
+    - `PostRepository`: 인메모리 데이터 저장소
 
-### [프로젝트 골격 생성]
-스프링부트 프로젝트 구동에 필요한 최소한의 기본 파일들을 생성합니다.
+### 2. Frontend (`src/main/resources/templates`)
+- **home/**: `home.html` (메인 화면)
+- **post/**: `posts.html`, `post_detail.html`, `post_new_form.html`, `post_edit_form.html`
 
-#### [신규] [build.gradle](file:///c:/ai_OK/git/vibe-coding-fullstack/server/vibeapp/build.gradle)
-Gradle 9.3.0 및 Groovy DSL을 사용하는 빌드 스크립트입니다.
-- Spring Boot 플러그인 (`org.springframework.boot` 버전 4.0.1)
-- 의존성 관리 플러그인 (`io.spring.dependency-management`)
-- Java 25 호환 설정 포함
+## 구현된 주요 기능
+1. **게시글 목록**: 5개 단위 페이징 처리
+2. **상세 보기**: 조회수 증가 로직 포함
+3. **게시글 생성/수정**: 실시간 서버 시간 기반 생성일/수정일 관리
+4. **게시글 삭제**: 안정성을 위해 POST 방식의 삭제 프로세스 준수
 
-#### [신규] [VibeApp.java](file:///c:/ai_OK/git/vibe-coding-fullstack/server/vibeapp/src/main/java/com/example/vibeapp/VibeApp.java)
-애플리케이션의 시작점인 메인 클래스입니다.
-
-#### [신규] [application.yml](file:///c:/ai_OK/git/vibe-coding-fullstack/server/vibeapp/src/main/resources/application.yml)
-YAML 형식의 프로젝트 설정 파일입니다.
-
-## 검증 계획
-
-### 자동화 테스트
-- `./gradlew build`: 프로젝트 빌드 성공 및 기본 구조 검증
-
-### 수동 검증
-- 애플리케이션 실행 로그 확인: "Started VibeApp in ..." 메시지 출력 확인
-- JDK 버전 확인: 터미널에서 `java -version` 결과가 25 이상인지 확인
+## 검증 방법
+- **빌드**: `./gradlew compileJava`로 정적 타입 및 컴파일 무결성 확인
+- **실행**: `./gradlew bootRun` 후 `http://localhost:8080` 접속 확인
