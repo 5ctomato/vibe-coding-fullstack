@@ -46,4 +46,18 @@ public class PostRepository {
     public void deleteByNo(Long no) {
         posts.removeIf(post -> post.getNo().equals(no));
     }
+
+    public List<Post> findAllPaginated(int page, int size) {
+        List<Post> sortedList = findAll(); // This already returns a sorted copy
+        int fromIndex = page * size;
+        if (fromIndex >= sortedList.size()) {
+            return new ArrayList<>();
+        }
+        int toIndex = Math.min(fromIndex + size, sortedList.size());
+        return sortedList.subList(fromIndex, toIndex);
+    }
+
+    public long count() {
+        return posts.size();
+    }
 }

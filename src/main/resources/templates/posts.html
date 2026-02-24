@@ -101,12 +101,26 @@
             </table>
         </div>
 
-        <div class="flex justify-center pt-8">
-            <button
-                class="h-12 px-8 border border-white/10 hover:bg-white/5 font-medium rounded-lg transition-all flex items-center justify-center gap-2">
-                Load More Nodes
-                <span class="material-symbols-outlined text-sm">expand_more</span>
-            </button>
+        <!-- Pagination -->
+        <div class="flex items-center justify-center gap-2 pt-8" th:if="${totalPages > 0}">
+            <a th:href="@{/posts(page=${currentPage - 1})}" th:if="${currentPage > 0}"
+                class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 hover:bg-primary/20 hover:text-primary transition-all">
+                <span class="material-symbols-outlined text-sm">chevron_left</span>
+            </a>
+
+            <div class="flex items-center gap-1">
+                <a th:each="pageNum : ${#numbers.sequence(0, totalPages - 1)}" th:href="@{/posts(page=${pageNum})}"
+                    th:text="${pageNum + 1}"
+                    class="w-10 h-10 flex items-center justify-center rounded-lg border transition-all font-mono text-sm"
+                    th:classappend="${pageNum == currentPage} ? 'bg-primary border-primary text-white' : 'border-white/10 hover:bg-white/5 text-slate-400'">
+                    1
+                </a>
+            </div>
+
+            <a th:href="@{/posts(page=${currentPage + 1})}" th:if="${currentPage < totalPages - 1}"
+                class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 hover:bg-primary/20 hover:text-primary transition-all">
+                <span class="material-symbols-outlined text-sm">chevron_right</span>
+            </a>
         </div>
     </main>
 
