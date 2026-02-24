@@ -1,4 +1,4 @@
-package com.example.vibeapp;
+package com.example.vibeapp.post;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,7 +61,7 @@ public class PostController {
         return "redirect:/posts/" + no;
     }
 
-    @GetMapping("/posts/{no}/delete")
+    @org.springframework.web.bind.annotation.PostMapping("/posts/{no}/delete")
     public String deletePost(@org.springframework.web.bind.annotation.PathVariable Long no) {
         postService.deletePost(no);
         return "redirect:/posts";
