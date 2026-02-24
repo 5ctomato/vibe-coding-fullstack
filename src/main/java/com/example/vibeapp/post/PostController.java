@@ -2,7 +2,7 @@ package com.example.vibeapp.post;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
@@ -15,7 +15,7 @@ public class PostController {
 
     @GetMapping("/posts")
     public String list(
-            @org.springframework.web.bind.annotation.RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "page", defaultValue = "0") int page,
             Model model) {
         int size = 5;
         List<Post> posts = postService.getPaginated(page, size);
@@ -28,7 +28,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/{no}")
-    public String detail(@org.springframework.web.bind.annotation.PathVariable Long no, Model model) {
+    public String detail(@PathVariable("no") Long no, Model model) {
         Post post = postService.get(no);
         model.addAttribute("post", post);
         return "post/post_detail";
@@ -40,29 +40,29 @@ public class PostController {
     }
 
     @GetMapping("/posts/{no}/edit")
-    public String updateForm(@org.springframework.web.bind.annotation.PathVariable Long no, Model model) {
+    public String updateForm(@PathVariable("no") Long no, Model model) {
         Post post = postService.get(no);
         model.addAttribute("post", post);
         return "post/post_edit_form";
     }
 
-    @org.springframework.web.bind.annotation.PostMapping("/posts/add")
-    public String create(@org.springframework.web.bind.annotation.RequestParam("title") String title,
-            @org.springframework.web.bind.annotation.RequestParam("content") String content) {
+    @PostMapping("/posts/add")
+    public String create(@RequestParam("title") String title,
+            @RequestParam("content") String content) {
         postService.create(title, content);
         return "redirect:/posts";
     }
 
-    @org.springframework.web.bind.annotation.PostMapping("/posts/{no}/save")
-    public String update(@org.springframework.web.bind.annotation.PathVariable Long no,
-            @org.springframework.web.bind.annotation.RequestParam("title") String title,
-            @org.springframework.web.bind.annotation.RequestParam("content") String content) {
+    @PostMapping("/posts/{no}/save")
+    public String update(@PathVariable("no") Long no,
+            @RequestParam("title") String title,
+            @RequestParam("content") String content) {
         postService.update(no, title, content);
         return "redirect:/posts/" + no;
     }
 
-    @org.springframework.web.bind.annotation.PostMapping("/posts/{no}/delete")
-    public String delete(@org.springframework.web.bind.annotation.PathVariable Long no) {
+    @PostMapping("/posts/{no}/delete")
+    public String delete(@PathVariable("no") Long no) {
         postService.delete(no);
         return "redirect:/posts";
     }
