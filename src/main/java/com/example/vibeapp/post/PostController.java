@@ -2,7 +2,13 @@ package com.example.vibeapp.post;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
+import com.example.vibeapp.post.dto.PostCreateDto;
+import com.example.vibeapp.post.dto.PostListDto;
+import com.example.vibeapp.post.dto.PostResponseDto;
+import com.example.vibeapp.post.dto.PostUpdateDto;
 import java.util.List;
 
 @Controller
@@ -18,7 +24,7 @@ public class PostController {
             @RequestParam(value = "page", defaultValue = "0") int page,
             Model model) {
         int size = 5;
-        List<Post> posts = postService.getPaginated(page, size);
+        List<PostListDto> posts = postService.getPaginated(page, size);
         int totalPages = postService.getTotalPages(size);
 
         model.addAttribute("posts", posts);
@@ -29,35 +35,46 @@ public class PostController {
 
     @GetMapping("/posts/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
-        Post post = postService.get(no);
+        PostResponseDto post = postService.get(no);
         model.addAttribute("post", post);
         return "post/post_detail";
     }
 
     @GetMapping("/posts/new")
-    public String createForm() {
+    public String createForm(Model model) {
+        model.addAttribute("postCreateDto", new PostCreateDto());
         return "post/post_new_form";
     }
 
     @GetMapping("/posts/{no}/edit")
     public String updateForm(@PathVariable("no") Long no, Model model) {
-        Post post = postService.get(no);
+        PostResponseDto post = postService.get(no);
         model.addAttribute("post", post);
+        PostUpdateDto dto = new PostUpdateDto(post.getTitle(), post.getContent());
+        model.addAttribute("postUpdateDto", dto);
         return "post/post_edit_form";
     }
 
     @PostMapping("/posts/add")
-    public String create(@RequestParam("title") String title,
-            @RequestParam("content") String content) {
-        postService.create(title, content);
+    public String create(@Valid @ModelAttribute PostCreateDto postCreateDto,
+            BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "post/post_new_form";
+        }
+        postService.create(postCreateDto);
         return "redirect:/posts";
     }
 
     @PostMapping("/posts/{no}/save")
     public String update(@PathVariable("no") Long no,
-            @RequestParam("title") String title,
-            @RequestParam("content") String content) {
-        postService.update(no, title, content);
+            @Valid @ModelAttribute PostUpdateDto postUpdateDto,
+            BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            PostResponseDto post = postService.get(no);
+            model.addAttribute("post", post);
+            return "post/post_edit_form";
+        }
+        postService.update(no, postUpdateDto);
         return "redirect:/posts/" + no;
     }
 

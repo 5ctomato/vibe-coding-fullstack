@@ -1,6 +1,11 @@
 package com.example.vibeapp.post;
 
 import org.springframework.stereotype.Service;
+import com.example.vibeapp.post.dto.PostCreateDto;
+import com.example.vibeapp.post.dto.PostListDto;
+import com.example.vibeapp.post.dto.PostResponseDto;
+import com.example.vibeapp.post.dto.PostUpdateDto;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -11,26 +16,25 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public Post get(Long no) {
+    public PostResponseDto get(Long no) {
         Post post = postRepository.findByNo(no);
         if (post != null) {
             post.setViews(post.getViews() + 1);
         }
-        return post;
+        return post != null ? PostResponseDto.from(post) : null;
     }
 
-    public void create(String title, String content) {
-        Post post = new Post(null, title, content, java.time.LocalDateTime.now(), 0);
-        post.setUpdatedAt(null); // Explicitly set as per requirement
+    public void create(PostCreateDto dto) {
+        Post post = dto.toEntity();
         postRepository.save(post);
     }
 
-    public void update(Long no, String title, String content) {
+    public void update(Long no, PostUpdateDto dto) {
         Post post = postRepository.findByNo(no);
         if (post != null) {
-            post.setTitle(title);
-            post.setContent(content);
-            post.setUpdatedAt(java.time.LocalDateTime.now());
+            post.setTitle(dto.getTitle());
+            post.setContent(dto.getContent());
+            post.setUpdatedAt(LocalDateTime.now());
         }
     }
 
@@ -38,8 +42,11 @@ public class PostService {
         postRepository.deleteByNo(no);
     }
 
-    public List<Post> getPaginated(int page, int size) {
-        return postRepository.findAllPaginated(page, size);
+    public List<PostListDto> getPaginated(int page, int size) {
+        return postRepository.findAllPaginated(page, size)
+                .stream()
+                .map(PostListDto::from)
+                .toList();
     }
 
     public int getTotalPages(int size) {
