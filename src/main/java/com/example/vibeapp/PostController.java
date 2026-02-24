@@ -53,4 +53,10 @@ public class PostController {
         postService.updatePost(no, title, content);
         return "redirect:/posts/" + no;
     }
+
+    @GetMapping("/posts/{no}/delete")
+    public String deletePost(@org.springframework.web.bind.annotation.PathVariable Long no) {
+        postService.deletePost(no);
+        return "redirect:/posts";
+    }
 }
