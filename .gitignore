@@ -25,3 +25,11 @@ bin/
 *.log
 build_log.txt
 .DS_Store
+
+### H2 Database ###
+/data/
+*.mv.db
+*.trace.db
+
+### Logs ###
+/logs/

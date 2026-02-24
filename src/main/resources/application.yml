@@ -2,10 +2,45 @@ spring:
   application:
     name: vibeapp
 
+  # ─── DataSource: H2 파일 모드 ───────────────────────────────────────
+  datasource:
+    url: jdbc:h2:file:./data/testdb;AUTO_SERVER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  # ─── H2 Console ────────────────────────────────────────────────────
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: false
+
+  # ─── SQL 초기화 ─────────────────────────────────────────────────────
+  sql:
+    init:
+      mode: always          # 매 구동 시 schema.sql / data.sql 실행
+
+  # ─── MyBatis ────────────────────────────────────────────────────────
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.example.vibeapp.post
+  configuration:
+    map-underscore-to-camel-case: true
+
 server:
   port: 8080
+
+# ─── 디버깅 & 로깅 ───────────────────────────────────────────────────
+debug: true
 
 logging:
   level:
     root: INFO
     com.example.vibeapp: DEBUG
+    org.springframework.boot.autoconfigure: DEBUG
+    org.mybatis: DEBUG
+    org.springframework.jdbc: DEBUG
+  file:
+    name: ./logs/app.log
