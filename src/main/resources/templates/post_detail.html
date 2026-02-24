@@ -63,17 +63,23 @@
     </nav>
 
     <main class="max-w-4xl mx-auto space-y-8">
-        <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
             <a href="/posts" class="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
                 <span
                     class="material-symbols-outlined transition-transform group-hover:-translate-x-1">arrow_back</span>
                 목록으로 돌아가기
             </a>
-            <div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-primary">
-                <span th:text="'Node #' + ${post.no}">Node #01</span>
-                <span class="w-1 h-1 bg-white/20 rounded-full"></span>
-                <span th:text="${post.views} + ' Waves'">124 Waves</span>
-            </div>
+            <a th:href="@{/posts/{no}/edit(no=${post.no})}"
+                class="group flex items-center gap-2 text-primary hover:text-white transition-colors ml-4">
+                <span class="material-symbols-outlined transition-transform group-hover:scale-110">edit</span>
+                수정하기
+            </a>
+        </div>
+        <div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-primary">
+            <span th:text="'Node #' + ${post.no}">Node #01</span>
+            <span class="w-1 h-1 bg-white/20 rounded-full"></span>
+            <span th:text="${post.views} + ' Waves'">124 Waves</span>
+        </div>
         </div>
 
         <article class="space-y-12 pb-20">

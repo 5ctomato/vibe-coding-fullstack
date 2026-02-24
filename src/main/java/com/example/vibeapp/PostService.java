@@ -28,4 +28,13 @@ public class PostService {
         post.setUpdatedAt(null); // Explicitly set as per requirement
         postRepository.save(post);
     }
+
+    public void updatePost(Long no, String title, String content) {
+        Post post = postRepository.findByNo(no);
+        if (post != null) {
+            post.setTitle(title);
+            post.setContent(content);
+            post.setUpdatedAt(java.time.LocalDateTime.now());
+        }
+    }
 }
